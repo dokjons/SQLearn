@@ -1,5 +1,4 @@
-![SQLearn Logo](https://github.com/dokjons/SQLearn/blob/main/static/fav/android-chrome-192x192.png?raw=true)
-# SQLearn
+# SQLearn ![SQLearn Logo](https://github.com/dokjons/SQLearn/blob/main/static/fav/favicon-32x32.png?raw=true)
 
 ## Overview
 
@@ -9,7 +8,7 @@ SQLearn is an interactive web application designed to help users learn and pract
 1. [Features](#features)
 2. [Getting Started](#getting-started)
 3. [Learning Outcomes](#learning-outcomes)
-4. [Contributions](#contributions)
+4. [Contributing](#contributing)
 5. [License](#license)
 6. [Made By](#made-by)
 7. [Contact](#contact)
