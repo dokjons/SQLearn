@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLearn - Databases and SQL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='ace/src-noconflict/ace.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='tasks.js') }}" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='fav/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='fav/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='fav/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='fav/safari-pinned-tab.svg') }}" color="#8600c7">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='fav/favicon.ico') }}">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="{{ url_for('static', filename='fav/browserconfig.xml') }}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div id="slide-menu" class="slide-menu">
+        <div class="menu-content">
+            <h2>SQL Commands</h2>
+            <input type="text" name="search-commands" id="search-commands" placeholder="Search commands">
+            <ul id="command-list">
+                <li class="command"><a href="#select">SELECT</a></li>
+                <li class="command"><a href="#insert">INSERT</a></li>
+                <li class="command"><a href="#update">UPDATE</a></li>
+                <li class="command"><a href="#delete">DELETE</a></li>
+                <li class="command"><a href="#create_table">CREATE TABLE</a></li>
+                <li class="command"><a href="#drop_table">DROP TABLE</a></li>
+                <li class="command"><a href="#alter_table">ALTER TABLE</a></li>
+                <li class="command"><a href="#drop_database">DROP DATABASE</a></li>
+                <li class="command"><a href="#create_index">CREATE INDEX</a></li>
+                <li class="command"><a href="#drop_index">DROP INDEX</a></li>
+                <li class="command"><a href="#create_view">CREATE VIEW</a></li>
+                <li class="command"><a href="#drop_view">DROP VIEW</a></li>
+                <li class="command"><a href="#truncate_table">TRUNCATE TABLE</a></li>
+                <li class="command"><a href="#grant">GRANT</a></li>
+                <li class="command"><a href="#revoke">REVOKE</a></li>
+                <li class="command"><a href="#commit">COMMIT</a></li>
+                <li class="command"><a href="#rollback">ROLLBACK</a></li>
+                <li class="command"><a href="#savepoint">SAVEPOINT</a></li>
+                <li class="command"><a href="#release_savepoint">RELEASE SAVEPOINT</a></li>
+                <li class="command"><a href="#set_transaction">SET TRANSACTION</a></li>
+                <li class="command"><a href="#union">UNION</a></li>
+                <li class="command"><a href="#union_all">UNION ALL</a></li>
+                <li class="command"><a href="#intersect">INTERSECT</a></li>
+                <li class="command"><a href="#except">EXCEPT</a></li>
+                <li class="command"><a href="#inner_join">INNER JOIN</a></li>
+                <li class="command"><a href="#left_join">LEFT JOIN</a></li>
+                <li class="command"><a href="#right_join">RIGHT JOIN</a></li>
+                <li class="command"><a href="#full_join">FULL JOIN</a></li>
+                <li class="command"><a href="#cross_join">CROSS JOIN</a></li>
+                <li class="command"><a href="#natural_join">NATURAL JOIN</a></li>
+                <li class="command"><a href="#exists">EXISTS</a></li>
+                <li class="command"><a href="#any">ANY</a></li>
+                <li class="command"><a href="#all">ALL</a></li>
+                <li class="command"><a href="#in">IN</a></li>
+                <li class="command"><a href="#between">BETWEEN</a></li>
+                <li class="command"><a href="#like">LIKE</a></li>
+                <li class="command"><a href="#is_null">IS NULL</a></li>
+                <li class="command"><a href="#is_not_null">IS NOT NULL</a></li>
+                <li class="command"><a href="#case">CASE</a></li>
+            </ul>
+            <div class="command-info">
+                <div id="select">
+                    <h3>SELECT</h3>
+                    <p><span>Short Description: </span>Retrieves data from a database.</p>
+                    <p><span>Long Description: </span>The SELECT statement is used to select data from a database. The data returned is stored in a result table, sometimes called the result set.</p>
+                    <pre><code>SELECT column1, column2 FROM table_name;</code></pre>
+                </div>
+                <div id="insert">
+                    <h3>INSERT</h3>
+                    <p><span>Short Description: </span>Inserts new records into a table.</p>
+                    <p><span>Long Description: </span>The INSERT INTO statement is used to insert new records in a table. You can insert data into specific columns or into all columns.</p>
+                    <pre><code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code></pre>
+                </div>
+                <div id="update">
+                    <h3>UPDATE</h3>
+                    <p><span>Short Description: </span>Modifies existing records.</p>
+                    <p><span>Long Description: </span>The UPDATE statement is used to modify the existing records in a table. The SET clause specifies which columns to modify and the new values.</p>
+                    <pre><code>UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;</code></pre>
+                </div>
+                <div id="delete">
+                    <h3>DELETE</h3>
+                    <p><span>Short Description: </span>Deletes existing records.</p>
+                    <p><span>Long Description: </span>The DELETE statement is used to delete existing records in a table. The WHERE clause specifies which records should be deleted.</p>
+                    <pre><code>DELETE FROM table_name WHERE condition;</code></pre>
+                </div>
+                <div id="create_table">
+                    <h3>CREATE TABLE</h3>
+                    <p><span>Short Description: </span>Creates a new table.</p>
+                    <p><span>Long Description: </span>The CREATE TABLE statement is used to create a new table in the database. You define the columns and their data types.</p>
+                    <pre><code>CREATE TABLE table_name (PersonID int, City varchar(255), column2 datatype);</code></pre>
+                </div>
+                <div id="drop_table">
+                    <h3>DROP TABLE</h3>
+                    <p><span>Short Description: </span>Deletes a table.</p>
+                    <p><span>Long Description: </span> The DROP TABLE statement is used to delete a table and all its data from the database.</p>
+                    <pre><code>DROP TABLE table_name;</code></pre>
+                </div>
+                <div id="alter_table">
+                    <h3>ALTER TABLE</h3>
+                    <p><span>Short Description: </span>Modifies a table.</p>
+                    <p><span>Long Description: </span>The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.</p>
+                    <pre><code>ALTER TABLE table_name ADD column_name datatype;</code></pre>
+                </div>
+                <div id="drop_database">
+                    <h3>DROP DATABASE</h3>
+                    <p><span>Short Description: </span>Deletes a database.</p>
+                    <p><span>Long Description: </span>The DROP DATABASE statement is used to delete an existing database and all its data.</p>
+                    <pre><code>DROP DATABASE database_name;</code></pre>
+                </div>
+                <div id="create_index">
+                    <h3>CREATE INDEX</h3>
+                    <p><span>Short Description: </span>Creates an index.</p>
+                    <p><span>Long Description: </span>The CREATE INDEX statement is used to create an index on a table. Indexes are used to retrieve data more quickly.</p>
+                    <pre><code>CREATE INDEX index_name ON table_name (column_name);</code></pre>
+                </div>
+                <div id="drop_index">
+                    <h3>DROP INDEX</h3>
+                    <p><span>Short Description: </span>Deletes an index.</p>
+                    <p><span>Long Description: </span>The DROP INDEX statement is used to delete an index from a table.</p>
+                    <pre><code>DROP INDEX index_name;</code></pre>
+                </div>
+                <div id="create_view">
+                    <h3>CREATE VIEW</h3>
+                    <p><span>Short Description: </span>Creates a view.</p>
+                    <p><span>Long Description: </span>The CREATE VIEW statement is used to create a view. A view is a virtual table based on the result set of an SQL statement.</p>
+                    <pre><code>CREATE VIEW view_name AS SELECT column1, column2, FROM table_name WHERE condition;</code></pre>
+                </div>
+                <div id="drop_view">
+                    <h3>DROP VIEW</h3>
+                    <p><span>Short Description: </span>Deletes a view.</p>
+                    <p><span>Long Description: </span>The DROP VIEW statement is used to delete a view.</p>
+                    <pre><code>DROP VIEW view_name;</code></pre>
+                </div>
+                <div id="truncate_table">
+                    <h3>TRUNCATE TABLE</h3>
+                    <p><span>Short Description: </span>Removes all data from a table.</p>
+                    <p><span>Long Description: </span>The TRUNCATE TABLE statement is used to delete all data inside a table, but not the table itself.</p>
+                    <pre><code>TRUNCATE TABLE table_name;</code></pre>
+                </div>
+                <div id="grant">
+                    <h3>GRANT</h3>
+                    <p><span>Short Description: </span>Grant privileges to a user.</p>
+                    <p><span>Long Description: </span>The GRANT statement is used to grant privileges to database users.</p>
+                    <pre><code>GRANT SELECT, INSERT ON table_name TO 'username';</code></pre>
+                </div>
+                <div id="revoke">
+                    <h3>REVOKE</h3>
+                    <p><span>Short Description: </span>Removes privileges from a user.</p>
+                    <p><span>Long Description: </span>The REVOKE statement is used to remove previously granted privileges from database users.</p>
+                    <pre><code>REVOKE SELECT, INSERT ON table_name FROM 'username';</code></pre>
+                </div>
+                <div id="commit">
+                    <h3>COMMIT</h3>
+                    <p><span>Short Description: </span>Saves a transaction.</p>
+                    <p><span>Long Description: </span>The COMMIT statement is used to save all changes made in the current transaction. Once committed, the changes are permanent.</p>
+                    <pre><code>COMMIT;</code></pre>
+                </div>
+                <div id="rollback">
+                    <h3>ROLLBACK</h3>
+                    <p><span>Short Description: </span>Undoes a transaction.</p>
+                    <p><span>Long Description: </span>The ROLLBACK statement is used to undo changes made in the current transaction. The changes are not saved permanently.</p>
+                    <pre><code>ROLLBACK;</code></pre>
+                </div>
+                <div id="savepoint">
+                    <h3>SAVEPOINT</h3>
+                    <p><span>Short Description: </span>Sets a savepoint within a transaction.</p>
+                    <p><span>Long Description: </span>The SAVEPOINT statement is used to set a savepoint within a transaction. You can roll back to this savepoint if needed.</p>
+                    <pre><code>SAVEPOINT savepoint_name;</code></pre>
+                </div>
+                <div id="release_savepoint">
+                    <h3>RELEASE SAVEPOINT</h3>
+                    <p><span>Short Description: </span>Releases a savepoint.</p>
+                    <p><span>Long Description: </span>The RELEASE SAVEPOINT statement is used to release a previously set savepoint.</p>
+                    <pre><code>RELEASE SAVEPOINT savepoint_name;</code></pre>
+                </div>
+                <div id="set_transaction">
+                    <h3>SET TRANSACTION</h3>
+                    <p><span>Short Description: </span>Sets transaction properties.</p>
+                    <p><span>Long Description: </span>The SET TRANSACTION statement is used to specify characteristics for the transaction.</p>
+                    <pre><code>SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre>
+                </div>
+                <div id="union">
+                    <h3>UNION</h3>
+                    <p><span>Short Description: </span>Combines results of two or more SELECT statements.</p>
+                    <p><span>Long Description: </span>The UNION operator is used to combine the result sets of two or more SELECT statements. It removes duplicate records between the combined result sets.</p>
+                    <pre><code>SELECT column1, column2 FROM table1 UNION SELECT column1, column2 FROM table2;</code></pre>
+                </div>
+                <div id="union_all">
+                    <h3>UNION ALL</h3>
+                    <p><span>Short Description: </span>Combines results of two or more SELECT statements, including duplicates.</p>
+                    <p><span>Long Description: </span>The UNION ALL operator is used to combine the result sets of two or more SELECT statements, including duplicate records.</p>
+                    <pre><code>SELECT column1, column2 FROM table1 UNION ALL SELECT column1, column2 FROM table2;</code></pre>
+                </div>
+                <div id="intersect">
+                    <h3>INTERSECT</h3>
+                    <p><span>Short Description: </span>Returns common records from two SELECT statements.</p>
+                    <p><span>Long Description: </span>The INTERSECT operator is used to return the common records from two SELECT statements.</p>
+                    <pre><code>SELECT column1, column2 FROM table1 INTERSECT SELECT column1, column2 FROM table2;</code></pre>
+                </div>
+                <div id="except">
+                    <h3>EXCEPT</h3>
+                    <p><span>Short Description: </span>Returns records from the first SELECT statement that are not in the second SELECT statement.</p>
+                    <p><span>Long Description: </span>The EXCEPT (or MINUS in some databases) operator is used to return the records from the first SELECT statement that are not in the second SELECT statement.</p>
+                    <pre><code>SELECT column1, column2 FROM table1 EXCEPT SELECT column1, column2 FROM table2;</code></pre>
+                </div>
+                <div id="inner_join">
+                    <h3>INNER JOIN</h3>
+                    <p><span>Short Description: </span>Returns records with matching values in both tables.</p>
+                    <p><span>Long Description: </span>The INNER JOIN keyword selects records that have matching values in both tables.</p>
+                    <pre><code>SELECT table1.column1, table2.column2 FROM table1 INNER JOIN table2 ON table1.common_column = table2.common_column;</code></pre>
+                </div>
+                <div id="left_join">
+                    <h3>LEFT JOIN</h3>
+                    <p><span>Short Description: </span>Returns all records from the left table and matched records from the right table.</p>
+                    <p><span>Long Description: </span>The LEFT JOIN (or LEFT OUTER JOIN) keyword returns all records from the left table, and the matched records from the right table. The result is NULL from the right side, if there is no match.</p>
+                    <pre><code>SELECT table1.column1, table2.column2 FROM table1 LEFT JOIN table2 ON table1.common_column = table2.common_column;</code></pre>
+                </div>
+                <div id="right_join">
+                    <h3>DELETE</h3>
+                    <p><span>Short Description: </span>Returns all records from the right table and matched records from the left table.</p>
+                    <p><span>Long Description: </span>The RIGHT JOIN (or RIGHT OUTER JOIN) keyword returns all records from the right table, and the matched records from the left table. The result is NULL from the left side, if there is no match.</p>
+                    <pre><code>SELECT table1.column1, table2.column2 FROM table1 RIGHT JOIN table2 ON table1.common_column = table2.common_column;</code></pre>
+                </div>
+                <div id="full_join">
+                    <h3>FULL JOIN</h3>
+                    <p><span>Short Description: </span>Returns all records when there is a match in either left or right table.</p>
+                    <p><span>Long Description: </span>The FULL JOIN (or FULL OUTER JOIN) keyword returns all records when there is a match in either left (table1) or right (table2) table records.</p>
+                    <pre><code>SELECT table1.column1, table2.column2 FROM table1 FULL JOIN table2 ON table1.common_column = table2.common_column;</code></pre>
+                </div>
+                <div id="cross_join">
+                    <h3>CROSS JOIN</h3>
+                    <p><span>Short Description: </span>Returns the Cartesian product of two tables.</p>
+                    <p><span>Long Description: </span>The CROSS JOIN keyword returns the Cartesian product of the two tables. This means that it will return all possible combinations of rows from both tables.</p>
+                    <pre><code>SELECT table1.column1, table2.column2 FROM table1 CROSS JOIN table2;</code></pre>
+                </div>
+                <div id="natural_join">
+                    <h3>NATURAL JOIN</h3>
+                    <p><span>Short Description: </span>Returns rows with matching values in both tables and removes duplicate columns.</p>
+                    <p><span>Long Description: </span>The NATURAL JOIN keyword selects rows with matching values in both tables and removes duplicate columns.</p>
+                    <pre><code>SELECT * FROM table1 NATURAL JOIN table2;</code></pre>
+                </div>
+                <div id="exists">
+                    <h3>EXISTS</h3>
+                    <p><span>Short Description: </span>Tests for the existence of any record in a subquery.</p>
+                    <p><span>Long Description: </span>The EXISTS operator is used to test for the existence of any record in a subquery. It returns TRUE if the subquery returns one or more records.</p>
+                    <pre><code>SELECT column1 FROM table1 WHERE EXISTS (SELECT column1 FROM table2 WHERE table1.common_column = table2.common_column);</code></pre>
+                </div>
+                <div id="any">
+                    <h3>ANY</h3>
+                    <p><span>Short Description: </span>Returns TRUE if any subquery values meet the condition.</p>
+                    <p><span>Long Description: </span>The ANY (or SOME) operator returns TRUE if any of the subquery values meet the condition.</p>
+                    <pre><code>SELECT column1 FROM table1 WHERE column1 = ANY (SELECT column1 FROM table2 WHERE condition);</code></pre>
+                </div>
+                <div id="all">
+                    <h3>ALL</h3>
+                    <p><span>Short Description: </span>Returns TRUE if all subquery values meet the condition.</p>
+                    <p><span>Long Description: </span>The ALL operator returns TRUE if all of the subquery values meet the condition.</p>
+                    <pre><code>SELECT column1 FROM table1 WHERE column1 > ALL (SELECT column1 FROM table2 WHERE condition);</code></pre>
+                </div>
+                <div id="in">
+                    <h3>IN</h3>
+                    <p><span>Short Description: </span>Allows you to specify multiple values in a WHERE clause.</p>
+                    <p><span>Long Description: </span>The IN operator allows you to specify multiple values in a WHERE clause. It is a shorthand for multiple OR conditions.</p>
+                    <pre><code>SELECT column1 FROM table_name WHERE column1 IN (value1, value2, ...);</code></pre>
+                </div>
+                <div id="between">
+                    <h3>BETWEEN</h3>
+                    <p><span>Short Description: </span>Selects values within a given range.</p>
+                    <p><span>Long Description: </span>The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.</p>
+                    <pre><code>SELECT column1 FROM table_name WHERE column1 BETWEEN value1 AND value2;</code></pre>
+                </div>
+                <div id="like">
+                    <h3>LIKE</h3>
+                    <p><span>Short Description: </span>Searches for a specified pattern in a column.</p>
+                    <p><span>Long Description: </span>The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.</p>
+                    <pre><code>SELECT column1 FROM table_name WHERE column1 LIKE pattern;</code></pre>
+                </div>
+                <div id="is_null">
+                    <h3>IS NULL</h3>
+                    <p><span>Short Description: </span>Tests for empty values.</p>
+                    <p><span>Long Description: </span>The IS NULL operator is used to test for empty values (NULL).</p>
+                    <pre><code>SELECT column1 FROM table_name WHERE column1 IS NULL;</code></pre>
+                </div>
+                <div id="is_not_null">
+                    <h3>IS NOT NULL</h3>
+                    <p><span>Short Description: </span>Tests for non-empty values.</p>
+                    <p><span>Long Description: </span>The IS NOT NULL operator is used to test for non-empty values (NOT NULL).</p>
+                    <pre><code>SELECT column1 FROM table_name WHERE column1 IS NOT NULL;</code></pre>
+                </div>
+                <div id="case">
+                    <h3>CASE</h3>
+                    <p><span>Short Description: </span>Creates different outputs based on conditions.</p>
+                    <p><span>Long Description: </span>The CASE statement is used to create different outputs based on conditions. It goes through conditions and returns a value when the first condition is met.</p>
+                    <pre><code>SELECT column1, CASE WHEN condition1 THEN result1 WHEN condition2 THEN result2 ELSE result3 END FROM table_name;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <nav>
+            <h1>SQLearn - Databases & SQL</h1>
+            <ul>
+                <li>
+                    <button id="tasks-menu-toggle" style="margin-top: 0;">Tasks</button>
+                </li>
+                <li>
+                    <button id="menu-toggle">SQL Commands</button>
+                </li>
+                <li>
+                    <label class="toggle-theme">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/>
+                        </svg>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+        <main class="content-container">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>
